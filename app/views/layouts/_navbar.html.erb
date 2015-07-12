@@ -18,6 +18,8 @@
 
         <!-- if user is not signed in display login and signup -->
         <% else %>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Contact", contact_path %></li>
           <li><%= link_to "Signup", signup_path %></li>
           <li><%= link_to "Login", login_path %></li>
         <% end %>
