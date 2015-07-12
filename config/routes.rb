@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'landings#index'
   get '/about' => 'landings#about'
   get '/contact' => 'landings#contact'
@@ -12,4 +13,7 @@ Rails.application.routes.draw do
   # receive the form and create a user in our database using the data given to us by the user.
   get     '/signup'    =>     'users#new'
   post    '/users'      =>    'users#create'
+
+  resources :listings
+
 end
