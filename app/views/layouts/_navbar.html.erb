@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">All Things Malibu</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="collapsed">
+      <ul class="nav navbar-nav navbar-right">
+
+        <!-- if user is signed in display  there name and logout option -->
+        <% if current_user %>
+
+        <!-- if user is not signed in display login and signup -->
+        <% else %>
+
+        <% end %>
+
+      </ul>
+    </div>
+  </div><!-- container -->
+</nav>
+
+<!-- modal partial -->
+<%= render "layouts/login_modal" %>
