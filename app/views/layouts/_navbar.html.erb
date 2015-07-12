@@ -15,7 +15,13 @@
 
         <!-- if user is signed in display  there name and logout option -->
         <% if current_user %>
-
+          <li><%= link_to "Home", listings_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+          <li>
+            <p class="navbar-text">Signed in as:
+              <span class="user-name"><%= current_user.username %></span>
+            </p>
+          </li>
         <!-- if user is not signed in display login and signup -->
         <% else %>
           <li><%= link_to "About", about_path %></li>
