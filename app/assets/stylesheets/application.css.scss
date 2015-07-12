@@ -27,3 +27,16 @@ body {
   padding-top: 70px;
   margin-bottom: 80px;
 }
+
+.footer {
+  background: #021913;
+  width: 100%;
+  height: 55px;
+  position: absolute;
+  bottom: 0;
+  p {
+    color: white;
+    font-size: 17px;
+    padding-top: 10px;
+  }
+}
