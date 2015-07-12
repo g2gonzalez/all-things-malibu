@@ -16,3 +16,14 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/*padding to help with navbar*/
+body {
+  padding-top: 70px;
+  margin-bottom: 80px;
+}
