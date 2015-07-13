@@ -1,5 +1,26 @@
-<h1>Welcome to All Things Malibu</h1>
+<div class="jumbotron">
+  <h1 class="text-center">Welcome to All Things Malibu</h1>
+</div>
 
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<div class="row">
+
+  <% @listings.each do | listing | %>
+    <div class="col-sm-3 col-md-3">
+      <div class="box panel panel-default">
+        <div class="panel-heading">
+          <%= image_tag listing.listing_img, class: "img-responsive index-img" %>
+        </div>
+        <div class="panel-footer">
+          <h3><%= "#{ listing.name }" %></h3>
+          <p><%= "#{ listing.description }" %></p>
+          <p><%= "$#{ listing.price }" %></p>
+          <hr>
+          <p>
+            Listed by: <%= "#{ listing.user.username } #{time_ago_in_words( listing.created_at ) } ago" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
