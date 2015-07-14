@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :listings
+
   root 'landings#index'
   get '/about' => 'landings#about'
   get '/contact' => 'landings#contact'
+  # get 'seller' => "listings#seller"
 
   # these routes are for showing users a login form, logging them in, and logging them out.
   get     '/login'       =>     'sessions#new'
@@ -13,7 +16,5 @@ Rails.application.routes.draw do
   # receive the form and create a user in our database using the data given to us by the user.
   get     '/signup'    =>     'users#new'
   post    '/users'      =>    'users#create'
-
-  resources :listings
 
 end

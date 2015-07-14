@@ -1,9 +1,12 @@
 class ListingsController < ApplicationController
 
-  # check that the current user can only see the correct pages
   before_action :authorize, except: [ :show ]
-  before_action :find_listing, only: [ :show, :edit, :update, :destroy, :upvote ]
   before_action :check_user, only: [ :edit, :update, :destroy ]
+  before_action :find_listing, only: [ :show, :edit, :update, :destroy, :upvote ]
+
+  def seller
+    @listings = Listing.where( user: current_user ).order( "created_at DESC" )
+  end
 
   def index
     # @listings = Listing.all.order( "created_at DESC" )
