@@ -1,26 +1,26 @@
 <br>
 <div class="row">
   <div class="col-md-6 .col-sm-6 .col-xs-6 col-md-offset-3">
-
-    <% if @user.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <div id="error_explanation">
-          <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
-          <ol>
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ol>
-        </div>
-      </div>
-    <% end %>
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="text-center">Signup</h3>
       </div>
       <div class="panel-body">
         <%= form_for @user do |f| %>
+
+          <% if @user.errors.any? %>
+            <div class="alert alert-danger alert-dismissable" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <div id="error_explanation">
+                <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+                <ol>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ol>
+              </div>
+            </div>
+          <% end %>
 
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
