@@ -16,7 +16,7 @@
           <p><%= "$#{ listing.price }" %></p>
           <hr>
           <p>
-            Sold by: <%= "#{ listing.user.username } #{time_ago_in_words( listing.created_at ) } ago" %>
+            Sold by: <%= "#{ listing.user.username } #{ time_ago_in_words( listing.created_at ) } ago" %>
           </p>
         </div>
       </div>
