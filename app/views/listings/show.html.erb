@@ -10,9 +10,9 @@
         <p><%= "#{ @listing.price }" %></p>
         <hr>
         <p>
-          Listed by: <%= "#{ @listing.user.username } #{time_ago_in_words( @listing.created_at ) } ago" %>
+          Sold by: <%= "#{ @listing.user.username } #{time_ago_in_words( @listing.created_at ) } ago" %>
         </p>
-        <% if current_user %>
+        <% if current_user == @listing.user.id %>
           <%= link_to 'Back', listings_path, class: "btn btn-primary"  %>
           <%= link_to "Edit", edit_listing_path( @listing ), class: "btn btn-warning" %></td>
           <%= link_to "Destroy", listing_path( @listing ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>

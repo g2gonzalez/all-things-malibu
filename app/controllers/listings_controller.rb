@@ -1,11 +1,13 @@
 class ListingsController < ApplicationController
 
   # check that the current user can only see the correct pages
-  before_action :authorize, except: [ :display, :show ]
+  before_action :authorize, except: [ :show ]
   before_action :find_listing, only: [ :show, :edit, :update, :destroy, :upvote ]
+  before_action :check_user, only: [ :edit, :update, :destroy ]
 
   def index
-    @listings = Listing.all.order( "created_at DESC" )
+    # @listings = Listing.all.order( "created_at DESC" )
+    @listings = Listing.where( user: current_user ).order( "created_at DESC" )
   end
 
   def show
@@ -50,6 +52,12 @@ class ListingsController < ApplicationController
 
     def listing_params
       params.require( :listing ).permit( :name, :description, :price, :quantity, :listing_img )
+    end
+
+    def check_user
+      if current_user != @listing.user
+        redirect_to root_path, flash: { info: "Sorry, this listing belongs to someone else" }
+      end
     end
 
 end
