@@ -20,6 +20,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new( listing_params )
+    @listing.user_id = current_user.id
 
     if @listing.save
       redirect_to @listing, flash: { info: "New listing created successfully" }
@@ -48,7 +49,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require( :listing ).permit( :name, :description, :price, :quantity, :listing_img, :user_id )
+      params.require( :listing ).permit( :name, :description, :price, :quantity, :listing_img )
     end
 
 end
