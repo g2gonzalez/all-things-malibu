@@ -23,8 +23,22 @@ class OrdersController < ApplicationController
     @order.seller_id = @listing.user.id
     @order.buyer_id = current_user.id
 
+    Stripe.api_key = ENV[ "stripe_api_key" ]
+    token = params[ :stripeToken ]
+
+    begin
+      charge = Stripe::Charge.create(
+        :amount => ( @listing.price * 100 ).floor,
+        :currency => "usd",
+        :card => token
+        )
+      flash[ :success ] = "Thanks for ordering!"
+    rescue Stripe::CardError => e
+      flash[ :danger ] = e.message
+    end
+
     if @order.save
-      redirect_to root_path, flash: { success: "Your order was successfully placed" }
+      redirect_to root_path
     else
       render :new
     end
