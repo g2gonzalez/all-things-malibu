@@ -40,6 +40,8 @@ gem 'figaro'
 gem 'carrierwave'
 # Use for uploading files to AWS
 gem 'fog'
+# User for processing payments
+gem 'stripe'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
