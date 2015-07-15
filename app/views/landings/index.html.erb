@@ -14,10 +14,16 @@
           <h3><%= "#{ listing.name }" %></h3>
           <p><%= "#{ listing.description }" %></p>
           <p><%= "$#{ listing.price }" %></p>
+          <p><%= link_to "Show", listing_path( listing ), class: "btn btn-primary" %></p>
           <hr>
           <p>
             Sold by: <%= "#{ listing.user.username } #{ time_ago_in_words( listing.created_at ) } ago" %>
           </p>
+          <% puts "current user: #{current_user.id} listing.user.id: #{listing.user.id}" %>
+          <% if current_user.id == listing.user.id %>
+            <%= link_to "Edit", edit_listing_path( listing ), class: "btn btn-warning" %></td>
+            <%= link_to "Destroy", listing_path( listing ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
+        <% end %>
         </div>
       </div>
     </div>

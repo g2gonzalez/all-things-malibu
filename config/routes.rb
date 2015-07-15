@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :listings
+  resources :listings do
+    resources :orders
+  end
 
   root 'landings#index'
   get '/about' => 'landings#about'

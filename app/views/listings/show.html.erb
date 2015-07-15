@@ -8,18 +8,20 @@
         <h3><%= "#{ @listing.name }" %></h3>
         <p><%= "#{ @listing.description }" %></p>
         <p><%= "#{ @listing.price }" %></p>
+        <p><%= link_to "Buy It Now", new_listing_order_path( @listing ), class: "btn btn-primary" %></p>
         <hr>
         <p>
-          Sold by: <%= "#{ @listing.user.username } #{time_ago_in_words( @listing.created_at ) } ago" %>
+          Sold by: <%= "#{ @listing.user.username }" %>
         </p>
         <% if current_user == @listing.user.id %>
-          <%= link_to 'Back', listings_path, class: "btn btn-primary"  %>
           <%= link_to "Edit", edit_listing_path( @listing ), class: "btn btn-warning" %></td>
           <%= link_to "Destroy", listing_path( @listing ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
-        <% else %>
-          <%= link_to 'Back', listings_path, class: "btn btn-primary"  %>
         <% end %>
       </div>
     </div>
+    <%= link_to 'Back', listings_path  %>
   </div>
 </div>
+
+
+<!-- #{time_ago_in_words( @listing.created_at ) } ago -->

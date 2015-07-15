@@ -58,8 +58,9 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if current_user != @listing.user
-        redirect_to root_path, flash: { info: "Sorry, this listing belongs to someone else" }
+      listing = Listing.find( params[ :id ] )
+      if current_user.id != listing.user.id
+        redirect_to root_path, flash: { warning: "Sorry, this listing belongs to someone else" }
       end
     end
 
