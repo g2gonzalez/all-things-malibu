@@ -3,7 +3,12 @@ class OrdersController < ApplicationController
   before_action :authorize, except: [ :show ]
   before_action :find_order, only: [ :show, :edit, :update, :destroy ]
 
-  def show
+  def sales
+    @orders = Order.all.where( seller: current_user ).order( "created_at DESC" )
+  end
+
+  def purchases
+    @orders = Order.all.where( buyer: current_user ).order( "created_at DESC" )
   end
 
   def new

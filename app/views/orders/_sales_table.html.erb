@@ -1,0 +1,19 @@
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <th class="text-center">Image</th>
+    <th class="text-center">Item</th>
+    <th class="text-center">Price</th>
+    <th class="text-center">Customer</th>
+    <th class="text-center">Date Sold</th>
+  </tr>
+
+  <% @orders.each do | order | %>
+    <tr>
+      <td class="text-center"><%= image_tag order.listing.listing_img, class: "img-responsive table-img" %></td>
+      <td class="text-center"><%= order.listing.name %></td>
+      <td class="text-center"><%= number_to_currency( order.listing.price ) %></td>
+      <td class="text-center"><%= order.buyer.username %></td>
+      <td class="text-center"><%= order.created_at.strftime( "%B %-d, %Y" ) %></td>
+    </tr>
+  <% end %>
+</table>

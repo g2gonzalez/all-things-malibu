@@ -1,0 +1,20 @@
+<div class="jumbotron dashboard">
+  <h1 class="text-center">Purchase History</h1>
+</div>
+
+<div class="row placeholders">
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-12 .col-sm-12 .col-xs-12">
+    <div class="table-responsive">
+      <!-- listings table partial -->
+      <%= render 'orders/purchases_table' %>
+    </div>
+  </div>
+</div>
+
+<hr>
+<%= link_to "Add LIsting", new_listing_path, class: "btn btn-primary" %>

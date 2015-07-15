@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
   resources :listings do
-    resources :orders
+    resources :orders, only: [ :new, :create ]
   end
 
   root 'landings#index'
   get '/about' => 'landings#about'
   get '/contact' => 'landings#contact'
   # get 'seller' => "listings#seller"
+  get 'sales' => "orders#sales"
+  get 'purchases' => "orders#purchases"
 
   # these routes are for showing users a login form, logging them in, and logging them out.
   get     '/login'       =>     'sessions#new'
