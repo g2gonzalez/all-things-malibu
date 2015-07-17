@@ -11,12 +11,12 @@
           <%= image_tag listing.listing_img, class: "img-responsive index-img" %>
         </div>
         <div class="panel-footer">
-          <h3><%= "#{ listing.name }" %></h3>
+          <h3 class="listing-title"><%= "#{ listing.name }" %></h3>
           <p><%= "$#{ listing.price }" %></p>
-          <p><%= link_to "Show", listing_path( listing ), class: "btn btn-primary" %></p>
+          <p><%= link_to "View", listing_path( listing ), class: "btn btn-primary" %></p>
           <hr>
           <p>
-            Sold by: <%= "#{ listing.user.username } #{ time_ago_in_words( listing.created_at ) } ago" %>
+            Sold by: <%= "#{ listing.user.username }" %>
           </p>
         </div>
       </div>
