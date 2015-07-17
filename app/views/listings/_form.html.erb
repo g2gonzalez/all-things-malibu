@@ -35,12 +35,8 @@
     <%= f.text_field :price, placeholder: "$3.87", class: "form-control" %>
   </div>
 
-  <% if current_user.recipient.blank? %>
+  <% if current_user.recipient_token.blank? %>
     <h3>Bank Account Information</h3>
-<<<<<<< HEAD
-=======
-
->>>>>>> add_stripe
     <div class="form-group">
       <%= label_tag :country %>
       <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>

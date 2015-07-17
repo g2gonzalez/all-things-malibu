@@ -19,12 +19,15 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new( order_params )
     @listing = Listing.find( params[ :listing_id ] )
-    @order.listing_id = params[ :listing_id ]
-    @order.seller_id = @listing.user.id
+    @seller = @listing.user
+
+    @order.listing_id = @listing.id
+    @order.seller_id = @seller.id
     @order.buyer_id = current_user.id
 
     Stripe.api_key = ENV[ "stripe_api_key" ]
     token = params[ :stripeToken ]
+    puts "PARAMS STRIPE TOKEN: #{params[:stripeToken]}"
 
     begin
       charge = Stripe::Charge.create(
@@ -36,6 +39,12 @@ class OrdersController < ApplicationController
     rescue Stripe::CardError => e
       flash[ :danger ] = e.message
     end
+
+    transfer = Stripe::Transfer.create(
+      :amount => (@listing.price * 95).floor,
+      :currency => "usd",
+      :recipient => @seller.recipient_token
+    )
 
     if @order.save
       redirect_to root_path
@@ -54,3 +63,5 @@ class OrdersController < ApplicationController
     end
 
 end
+
+# 4000 0000 0000 0077
