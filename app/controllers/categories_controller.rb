@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_action :authorize, except: [ :show ]
-  before_action :find_listing, only: [ :edit, :update, :destroy ]
+  before_action :find_category, only: [ :edit, :update, :destroy ]
 
   def index
     @categories = Category.all.order( "created_at DESC" )
@@ -22,14 +22,14 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
     if @category.update( category_params )
       redirect_to categories_path, flash: { info: "Category successfully updated" }
     else
       render :edit
     end
-  end
-
-  def update
   end
 
   def destroy
