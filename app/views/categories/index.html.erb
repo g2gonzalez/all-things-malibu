@@ -1,0 +1,18 @@
+<div class="jumbotron dashboard">
+  <h1 class="text-center">Manage Categories</h1>
+</div>
+
+<div class="row placeholders">
+</div>
+
+<div class="row">
+  <div class="col-md-12 .col-sm-12 .col-xs-12">
+
+      <!-- listings table partial -->
+      <%= render 'categories/categories_table' %>
+
+  </div>
+</div>
+
+<hr>
+<%= link_to "New Category", new_category_path, class: "btn btn-primary", data: { no_turbolink: true } %>

@@ -7,7 +7,8 @@
       <div class="panel-footer">
         <h3><%= "#{ @listing.name }" %></h3>
         <p><%= "#{ @listing.description }" %></p>
-        <p><%= "#{ @listing.price }" %></p>
+        <p><%= "$#{ @listing.price }" %></p>
+        <p><%= "#{ @listing.category.name }" %></p>
         <p><%= link_to "Buy It Now", new_listing_order_path( @listing ), class: "btn btn-primary", data: { no_turbolink: true } %></p>
         <hr>
         <p>

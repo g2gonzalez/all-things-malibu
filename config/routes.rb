@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :orders, only: [ :new, :create ]
   end
 
+  resources :categories
+
   root 'landings#index'
   get '/about' => 'landings#about'
   get '/contact' => 'landings#contact'
